@@ -47,7 +47,7 @@ app.layout = html.Div([
             max=df['Week'].max(),
             step=1,
             value=[df['Week'].min(), df['Week'].max()],
-            marks={i: f"{i}" for i in range(df['Week'].min(), df['Week'].max() + 1, 10)}
+            marks={i: f"{i}" for i in range(int(df['Week'].min()), int(df['Week'].max()) + 1, 10)}
         ),
 
         # Слайдер для вибору діапазону років
@@ -58,7 +58,7 @@ app.layout = html.Div([
             max=df['Year'].max(),
             step=1,
             value=[df['Year'].min(), df['Year'].max()],
-            marks={i: f"{i}" for i in range(df['Year'].min(), df['Year'].max() + 1, 5)}
+            marks={i: f"{i}" for i in range(int(df['Year'].min()), int(df['Year'].max()) + 1, 5)}
         ),
 
         # Кнопка для скидання фільтрів
@@ -194,4 +194,4 @@ def update_content(selected_tab, selected_series, selected_region, week_range, y
 
 # Запуск застосунку
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run(debug=True)
